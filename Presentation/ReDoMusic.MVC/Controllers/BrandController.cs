@@ -38,7 +38,6 @@ namespace ReDoMusic.MVC.Controllers
                 Id = Guid.NewGuid(),
                 CreatedOn = DateTime.UtcNow,
             };
-            //default değerler gelsin
 
             _dbContext.Brands.Add(brand);
 
@@ -48,9 +47,10 @@ namespace ReDoMusic.MVC.Controllers
         }
 
          [HttpGet]
-         public IActionResult Update()
+         public IActionResult Update(string id)
          {
-             return View();
+            var brand = _dbContext.Brands.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault();
+            return View(brand);
          } 
 
          [HttpPost]
