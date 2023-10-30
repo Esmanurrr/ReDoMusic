@@ -1,0 +1,26 @@
+﻿@using ReDoMusic.Domain.Entities;
+@model List<Category>
+
+<div class="container mt-3">
+    <h2>Categories</h2>
+    <table class="table  table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th width="20px">Update</th>
+                <th width="20px">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.OrderBy(b => b.Name))
+            {
+                <tr>
+                    <td>@category.Name</td>
+                    <td><a href="/category/update/@category.Id" class="btn btn-success">Update</a></td>
+                    <td><a href="/category/delete/@category.Id" class="btn btn-danger">Delete</a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    </di
