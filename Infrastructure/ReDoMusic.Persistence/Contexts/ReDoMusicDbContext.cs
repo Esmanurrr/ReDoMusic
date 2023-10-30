@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ReDoMusic.Core.Domain.Common;
 using ReDoMusic.Core.Domain.Entities;
 using ReDoMusic.Domain.Entities;
 using System;
@@ -13,7 +14,6 @@ namespace ReDoMusic.Infrastructure.Persistence.Contexts
     {
         public DbSet<Instrument> Instruments { get; set; }
         public DbSet<Brand> Brands { get; set; }
-
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,6 +28,23 @@ namespace ReDoMusic.Infrastructure.Persistence.Contexts
             modelBuilder.Entity<Instrument>()
                 .HasOne(x => x.Category);
                 
+        }
+
+        public override int SaveChanges()
+        {
+            var entries = ChangeTracker.Entries();
+
+            foreach (var entry in entries)
+            {
+                if (entry.State == EntityState.Added)
+                    ((ICreatedOn)entry.Entity).CreatedOn = DateTime.UtcNow;
+
+                if (entry.State == EntityState.Modified)
+                    ((IModifiedOn)entry.Entity).ModifiedOn = DateTime.UtcNow;
+
+            }
+
+            return base.SaveChanges();
         }
 
     }
