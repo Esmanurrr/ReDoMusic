@@ -30,7 +30,7 @@ namespace ReDoMusic.MVC.Controllers
         [HttpPost]
         public IActionResult Add(string name)
         {
-            var category = new Category() { Name = name, Id = Guid.NewGuid(), CreatedOn = DateTime.UtcNow };
+            var category = new Category() { Name = name, Id = Guid.NewGuid()};
 
             _dbContext.Categories.Add(category);
 
