@@ -1,62 +1,189 @@
-﻿<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">ReDo Müzik</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">En Yeniler</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">En Popüler</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Enstrümanlar
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Telli</a></li>
-                        <li><a class="dropdown-item" href="#">Yaylı</a></li>
-                        <li><a class="dropdown-item" href="#">Üflemeli</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="d-flex" style="margin-right:60px;">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-            <div class="d-flex align-items-center">
-                <a href="#" class="btn btn-primary me-2">Giriş Yap</a>
-                <a href="#" class="btn btn-primary me-2">Kaydol</a>
-            </div>
-          
-        </div>
-    </div>
-</nav>
+﻿@using ReDoMusic.Core.Domain.Entities;
+@using ReDoMusic.Core.Domain.Enums;
+@using ReDoMusic.Domain.Entities;
+@using ReDoMusic.MVC.Models;
+@model InstrumentColorViewModel
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitle">Başlık</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Modal içeriği buraya gelir.</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redo Music</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-size: 18px;
+        }
+
+        .navbar {
+            background-color: black;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: xx-large;
+            margin-right: 100px;
+            pointer-events: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #007bff;
+            }
+
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+
+        .search-form {
+            margin-right: 50px;
+        }
+
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            display: inline-block;
+            margin-right: 5px;
+            border-radius: 50%;
+        }
+
+        .form-label {
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .price-range {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+</html>
+    <!-- Üst Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Redo Music</a>
+            <form class="d-flex search-form">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search search-icon"></i></button>
+            </form>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Alt Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Main Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Brands</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                            <li><a class="dropdown-item" href="#">String</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+<div class="container-fluid mt-4">
+    <div class="row">
+        @if (Model != null && Model.Instruments.Any() && Model.Colors.Any())
+        {
+            <div class="col-lg-3">
+                <h2>Instruments</h2>
+                <form method="post">
+                    @foreach (var instrument in Model.Instruments)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="@instrument.Id" name="instrumentCheckboxes" value="@instrument.Id" @(instrument.IsSelected ? "checked" : "")>
+                            <label class="form-check-label" for="@instrument.Id">
+                                @instrument.Name
+                            </label>
+                        </div>
+                    }
+                    <h2>Colors</h2>
+                    @foreach (var color in Model.Colors)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="@color.Id" name="colorCheckboxes" value="@color.Name" @(color.IsSelected ? "checked" : "")>
+                            <label class="form-check-label" for="@color.Id">
+                                @color.Name
+                            </label>
+                        </div>
+                    }
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="col-lg-9">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Brand</th>
+                            <th>Price</th>
+                            <th>Color</th>
+                            <th>Barcode</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.FilteredInstruments != null && Model.FilteredInstruments.Any())
+                        {
+                            foreach (var instrument in Model.FilteredInstruments)
+                            {
+                                <tr>
+                                    <td>
+                                        <input class="form-check-input" type="checkbox" id="@instrument.Id" name="selectedInstruments" value="@instrument.Id" checked>
+                                    </td>
+                                    <td>@instrument.Name</td>
+                                    <td>@instrument.Description</td>
+                                    <td>@instrument.Brand</td>
+                                    <td>@instrument.Price</td>
+                                    <td>@instrument.Color</td>
+                                    <td>@instrument.Barcode</td>
+                                    <td>@instrument.Category</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8">No instruments found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
     </div>
 </div>
-
-
-@section scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/modal.js"></script>
-}
+ 
