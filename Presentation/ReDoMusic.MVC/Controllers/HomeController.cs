@@ -24,24 +24,20 @@ namespace ReDoMusic.MVC.Controllers
             var instrumentsWithColors = _dbContext.Instruments.ToList();
 
             var instrumentCheckboxes = instrumentsWithColors
-                .Select(i => i.Name)
-                .Distinct()
-                .Select(instrumentType => new CheckboxViewModel
+                .Select(i => new CheckboxViewModel
                 {
-                    Name = instrumentType.ToString(),
+                    Id = i.Id,
+                    Name = i.Name,
                     IsSelected = false
                 })
+                .Distinct()
                 .ToList();
 
             var colorCheckboxes = instrumentsWithColors
-                .Select(i => i.Color.ToString())
+                .Select(i => new CheckboxViewModel() { Name = i.Color.ToString(), Id = i.Id, IsSelected = false })
                 .Distinct()
-                .Select(colorString => new CheckboxViewModel
-                {
-                    Name = colorString,
-                    IsSelected = false
-                })
                 .ToList();
+                
 
             var viewModel = new InstrumentColorViewModel
             {
@@ -51,6 +47,8 @@ namespace ReDoMusic.MVC.Controllers
 
             return View(viewModel);
         }
+
+
 
     }
 
