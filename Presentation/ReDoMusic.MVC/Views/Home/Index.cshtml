@@ -118,13 +118,15 @@
         {
             <div class="col-lg-3">
                 <h2>Instruments</h2>
-                <form method="post">
-                    @foreach (var instrument in Model.Instruments)
+                <form method="post" asp-controller="home" asp-action="index">
+                   
+                    @for(int i = 0; i < Model.Instruments.Count; i++)
                     {
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="@instrument.Id" name="instrumentCheckboxes" value="@instrument.Id" @(instrument.IsSelected ? "checked" : "")>
-                            <label class="form-check-label" for="@instrument.Id">
-                                @instrument.Name
+                            <input class="form-check-input" type="text hidden" asp-for="@Model.Instruments[i].Id">
+                            <input class="form-check-input" type="checkbox" asp-for="@Model.Instruments[i].IsSelected">
+                            <label class="form-check-label" asp-for="@Model.Instruments[i].Name">
+                                @Model.Instruments[i].Name
                             </label>
                         </div>
                     }
