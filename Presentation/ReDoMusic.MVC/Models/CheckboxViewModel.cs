@@ -13,13 +13,26 @@ namespace ReDoMusic.MVC.Models
         public string Name { get; set; }
     }
 
+    public class ColorViewModel
+    {
+        public ColorViewModel() { }
+        public ColorViewModel(string name, int number)
+		{
+			Name = name;
+			Number = number;
+		}
+
+		public string Name { get; set; }
+        public int Number { get; set; }
+        public bool IsSelected { get; set; }
+    }
+
 
     public class CategoryColorViewModel
     {
         public List<CheckboxViewModel> Categories { get; set; }
-        public List<CheckboxViewModel> Colors { get; set; }
+        public List<ColorViewModel> Colors { get; set; }
         public List<Category>? FilteredCategories { get; set; }
-        public List<Color> FilteredColors { get; set; } 
         public List<Instrument> Instruments { get; set; }
         
     }
