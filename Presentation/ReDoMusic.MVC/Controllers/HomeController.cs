@@ -46,6 +46,15 @@ namespace ReDoMusic.MVC.Controllers
 
 			viewModel.Colors = Enum.GetValues(typeof(Color)).Cast<Color>().Select(x => new ColorViewModel(x.ToString(), (int)x)).ToList();
 
+			viewModel.PriceIntervals = new List<PriceIntervalViewModel>
+			{
+				new PriceIntervalViewModel { MinPrice = 0, MaxPrice = 500, IsSelected = false },
+				new PriceIntervalViewModel { MinPrice = 500, MaxPrice = 1000, IsSelected = false },
+				new PriceIntervalViewModel { MinPrice = 1000, MaxPrice = 1500, IsSelected = false },
+				new PriceIntervalViewModel { MinPrice = 1500, MaxPrice = 2000, IsSelected = false },
+			 
+			};
+
 
 			return View(viewModel);
 		}
@@ -53,27 +62,40 @@ namespace ReDoMusic.MVC.Controllers
 		[HttpPost]
 		public IActionResult Index([FromForm] CategoryColorViewModel viewModel)
 		{
-			var selectedCategories = viewModel.Categories
-				.Where(x => x.IsSelected)
-				.Select(x => x.Id)
+			var selectedCategoryIds = viewModel.Categories
+				 .Where(c => c.IsSelected)
+				 .Select(c => c.Id)
+				 .ToList();
+
+			var selectedColorNumbers = viewModel.Colors
+				.Where(c => c.IsSelected)
+				.Select(c => c.Number)
 				.ToList();
 
-
-			var selectedColors = viewModel.Colors
-				.Where(x => x.IsSelected)
-				.Select(x => x.Number)
+			var selectedPriceIntervals = viewModel.PriceIntervals
+				.Where(p => p.IsSelected)
+				.Select(p => new { MinPrice = p.MinPrice, MaxPrice = p.MaxPrice })
 				.ToList();
 
-			bool isFiltered = viewModel.Categories.Where(x => x.IsSelected).Any() || viewModel.Colors.Where(x => x.IsSelected).Any();
-
-			viewModel.Instruments = _dbContext.Instruments
+			var instruments = _dbContext.Instruments
 				.Include(x => x.Category)
-				.Where(x => !isFiltered || (selectedCategories.Contains(x.Category.Id) || selectedColors.Contains((int)x.Color)))
 				.ToList();
+
+			var filteredInstruments = instruments
+				.Where(x =>
+					(!selectedCategoryIds.Any() || selectedCategoryIds.Contains(x.Category.Id)) &&
+					(!selectedColorNumbers.Any() || selectedColorNumbers.Contains((int)x.Color)) &&
+					(!selectedPriceIntervals.Any() || selectedPriceIntervals.Any(interval => x.Price >= interval.MinPrice && x.Price <= interval.MaxPrice)))
+				.ToList();
+
+			viewModel.Instruments = filteredInstruments;
 
 			return View(viewModel);
 		}
+
 	}
 }
+
+
 
 
