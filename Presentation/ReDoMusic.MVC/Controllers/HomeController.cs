@@ -36,7 +36,7 @@ namespace ReDoMusic.MVC.Controllers
 				.Distinct()
 				.ToList();
 
-			var instruments = _dbContext.Instruments.ToList();
+			var instruments = _dbContext.Instruments.OrderByDescending(x=>x.Price).ToList();
 
 			var viewModel = new CategoryColorViewModel
 			{
