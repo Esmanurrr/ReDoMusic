@@ -86,6 +86,7 @@ namespace ReDoMusic.MVC.Controllers
 					(!selectedCategoryIds.Any() || selectedCategoryIds.Contains(x.Category.Id)) &&
 					(!selectedColorNumbers.Any() || selectedColorNumbers.Contains((int)x.Color)) &&
 					(!selectedPriceIntervals.Any() || selectedPriceIntervals.Any(interval => x.Price >= interval.MinPrice && x.Price <= interval.MaxPrice)))
+				.OrderBy(x=>x.Price)
 				.ToList();
 
 			viewModel.Instruments = filteredInstruments;
@@ -93,7 +94,55 @@ namespace ReDoMusic.MVC.Controllers
 			return View(viewModel);
 		}
 
-	}
+		[HttpGet]
+        public IActionResult Search(string searchTerm = "")
+        {
+			var categories = _dbContext.Categories.ToList();
+            // Arama sorgusu ile enstrümanları filtrele
+            var instruments = _dbContext.Instruments
+				.Include(x=>x.Category)
+                .Where(x => x.Name.Contains(searchTerm) || x.Category.Name.Contains(searchTerm))
+                .OrderBy(x => x.Price)
+                .ToList();
+
+			var categoriesWithColors = _dbContext.Categories.ToList();
+
+			var categoryCheckboxes = categoriesWithColors
+				.Select(i => new CheckboxViewModel
+				{
+					Id = i.Id,
+					IsSelected = false,
+					Name = i.Name,
+				})
+				.Distinct()
+				.ToList();
+
+			var colors = Enum.GetValues(typeof(Color)).Cast<Color>().Select(x => new ColorViewModel(x.ToString(), (int)x)).ToList();
+
+			var prices = new List<PriceIntervalViewModel>
+			{
+				new PriceIntervalViewModel { MinPrice = 0, MaxPrice = 500, IsSelected = false },
+				new PriceIntervalViewModel { MinPrice = 500, MaxPrice = 1000, IsSelected = false },
+				new PriceIntervalViewModel { MinPrice = 1000, MaxPrice = 1500, IsSelected = false },
+				new PriceIntervalViewModel { MinPrice = 1500, MaxPrice = 2000, IsSelected = false },
+
+			};
+
+			// CategoryColorViewModel içinde bu sorgu sonuçlarını kullanarak modeli doldurun
+			var viewModel = new CategoryColorViewModel
+			{
+				Colors = colors,
+				Categories = categoryCheckboxes,
+				PriceIntervals = prices,
+				Instruments = instruments,
+            };
+
+            // Sonucu Index view'ına gönderin
+            return View("Index", viewModel);
+        }
+
+
+    }
 }
 
 
