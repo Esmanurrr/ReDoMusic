@@ -62,19 +62,20 @@
 				<button class="btn btn-outline-primary" style="width:auto; margin-top:10px;" type="submit">Submit</button>
 			</form>
 		</div>
-		  <div class="col-lg-9">
+		  <div class="col-lg-9" >
                 <div class="row">
                     @foreach (var instrument in Model.Instruments)
                     {
                         <div class="col-lg-4 mb-4">
-                            <div class="card">
-                                <img src="@instrument.PictureUrl" class="card-img-top" alt="@instrument.Name">
+                            <div class="card card-custom">
+							<img src="@instrument.PictureUrl" class="custom-image" alt="@instrument.Name">
                                 <div class="card-body">
                                     <h5 class="card-title">@instrument.Name</h5>
                                     <p class="card-text">@instrument.Price.ToString("C")</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary">Sepete Ekle</button>
+								<a asp-controller="Instrument" asp-action="Details" asp-route-id="@instrument.Id">Details</a>
+
                                 </div>
                             </div>
                         </div>
