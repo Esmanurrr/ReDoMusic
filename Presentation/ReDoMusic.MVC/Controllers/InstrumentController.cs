@@ -67,12 +67,12 @@ namespace ReDoMusic.MVC.Controllers.Instrument
         }
 
         [HttpGet]
-        [Route("[controller]/[action]/{id}")]
+        [Route("Intstrument/Details/{id}")]
         public IActionResult Details(string id)
         {
-            var instrument = _dbContext.Instruments.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault();
+			var instrument = _dbContext.Instruments.FirstOrDefault(x => x.Id == Guid.Parse(id));
 
-            return View(instrument);
+			return View(instrument);
         }
 
         [HttpGet]

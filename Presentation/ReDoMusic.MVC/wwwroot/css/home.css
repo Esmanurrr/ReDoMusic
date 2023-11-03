@@ -2,3 +2,21 @@
     margin-left:-170px;
 }
 
+    /* Kart içeriğinin stilini özelleştirme */
+    .card-custom .card-title {
+        font-size: 1.2rem; /* Kart başlıklarının boyutunu ayarlama */
+    }
+
+    .card-custom .card-text {
+        font-size: 1.5rem; /* Kart metinlerinin boyutunu ayarlama */
+    }
+
+    .card-custom .card-footer {
+        text-align: center;
+    }
+/* Resimlerin boyutlarını ayarlama */
+.custom-image {
+    width: 100%; /* Resimlerin genişliğini kartın genişliğine eşitleme */
+    height: 300px; /* Resimlerin yüksekliğini sabit bir değere ayarlama */
+    object-fit: cover; /* Resmi boyutlarını korurken taşırmayı önler */
+}
