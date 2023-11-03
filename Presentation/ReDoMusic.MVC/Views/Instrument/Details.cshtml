@@ -1,18 +1,25 @@
 ﻿﻿@using ReDoMusic.Core.Domain.Entities;
 @model Instrument
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/home.css">
+</head>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="image-frame">
                 <img src="@Model.PictureUrl" alt="Product Image" class="img-fluid">
             </div>
-            <div class="col-md-6">
-                <h2 class="my-3">@Model.Name</h2>
-                <p>@Model.Description</p>
-                <p>Price: $@Model.Price</p>
-                <button class="btn btn-outline-success">Buy Now</button>
-            </div>
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+            <h2 class="my-3" style="text-align:center;">@Model.Name</h2>
+            <p><b>Description: </b>@Model.Description</p>
+            <p><b>Price: </b>$@Model.Price</p>
+            <button class="btn btn-outline-success" style="display: block; margin: 0 auto;">
+                Buy Now
+            </button>
         </div>
     </div>
-</body>
+</div>
+

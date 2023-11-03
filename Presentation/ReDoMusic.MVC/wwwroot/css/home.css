@@ -20,3 +20,10 @@
     height: 300px; /* Resimlerin yüksekliğini sabit bir değere ayarlama */
     object-fit: cover; /* Resmi boyutlarını korurken taşırmayı önler */
 }
+.image-frame {
+    margin-top:30px;
+    box-shadow: 0 0 10px rgb(128, 128, 128); /* Gölge efekti ekler */
+    padding: 40px; /* Çerçeve etrafındaki iç boşluğu ayarlar */
+    border: 1px solid #ddd; /* Bir kenarlık ekler */
+    border-radius: 5px; /* Köşeleri yuvarlar */
+}
