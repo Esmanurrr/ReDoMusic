@@ -30,10 +30,10 @@ These features enhance the project's functionality, providing users with a seaml
 - **Search Bar:**
   Allows users to search products by their names, ensuring quick and precise results for effortless navigation.
 
-- **Details Page**
+- **Details Page:**
    A detail page that opens when the products are clicked has been created.
 
-- **Hot New**
+- **Hot New:**
     A 'Hot New' page has been added, listing the latest 3 products from each category.
 
 ## Project Features (Detailed)
@@ -109,8 +109,32 @@ Here is how the method works:
       - This method prepares the necessary data for the user to perform searches, view the results, and see filtering options, and it passes this data to the View layer for display on the screen.
 
 - **Details Page**
+    - Instrument Controller:
+        - Added a new HTTP GET action method named Details in the InstrumentController.
+        - Implemented a route pattern to handle requests for instrument details based on their unique id.
+        - Retrieved the instrument details from the database using the provided id.
+        - Returned the instrument data to the corresponding view for rendering.
+
+    - Details View (index.cshtml):
+        - Created a dedicated view named index.cshtml to display instrument details.
+        - Utilized the Instrument model for binding data.
+        - Designed the view layout, showcasing the product image, name, description, and price.
+        - Implemented a "Buy Now" button for users to initiate a purchase action.
+
+    These changes enable the creation of a detail page that opens when users click on products, enhancing the user experience by providing detailed information about the selected instrument and offering a straightforward option to make a purchase.
 
 - **Hot New**
+    - HotNewController:
+        - Created a new controller named HotNewController responsible for managing hot new products.
+        - Dynamically fetched the latest 3 instruments from each category, ordered by descending creation date and then ascending price.
+        - Combined and displayed these instruments in the Index view.
+          
+    - Index View (HotNew):
+        - Modified the Index view under the HotNew section to integrate the retrieved instrument data.
+        - Each instrument's image, name, and price were displayed within styled cards for a visually appealing presentation.
+        - Implemented a card footer with a "Details" link for users to access detailed information about each instrument.
+
+    These changes enhance user experience by showcasing new and trending products effectively, encouraging user engagement and exploration of the featured instruments.
 
 ## Assignment of Tasks
 - **Elif Baykara**
