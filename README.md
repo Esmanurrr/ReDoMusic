@@ -32,6 +32,11 @@ These features enhance the project's functionality, providing users with a seaml
 
 ## Project Features (Detailed)
 - **Navigation Property and Entity Relationship:**
+  In our created project, we established a one-to-many relationship between each instrument and its category and vice versa. This is because we will create multiple instruments within each category.
+  To achieve this, we used navigation properties:
+    - Within the category, there is a public List<Instrument> property representing the instruments it contains.
+    - Within the instrument, there is a public Category property representing the category it belongs to.
+  
 - **Controller and Views for CRUD Operations:**
   - Add Operation:
       - [HttpGet] public IActionResult Add(): Returns a page displaying a form for users to add a new brand. This method works with HTTP GET requests and returns a view.
@@ -98,6 +103,27 @@ Here is how the method works:
       - This method prepares the necessary data for the user to perform searches, view the results, and see filtering options, and it passes this data to the View layer for display on the screen.
 
 ## Assignment of Tasks
+- **Elif Baykara**
+  
+- **Esmanur Mazlum**
+    - Navigation Property: Implemented relationships between entities for efficient data retrieval and navigation.
+    - Category Controller and Category View: Developed controllers and views for managing and displaying product categories.
+    - Search Bar Activation: Enabled the search bar feature for users to find specific items within the application.
+    - Hot New Controller and View: Created a controller and view to showcase trending or newly added products.
+    - GitHub - Merge: Collaborated on GitHub by merging code changes and branches for seamless integration.
+      
+- **Cengizhan Civelek**
+    - Creation of Entities: Under the Core layer of the project, entities such as Brand, Instrument, and Category are defined.
+    - Entity Inheritance: These entities inherit properties and behaviors from the base entity, establishing connections and relationships among them.
+    - Product Listing: The Home controller is responsible for retrieving and displaying products.
+    - Index View Creation: An Index view is created under the Home controller to list the products.
+    - Filtering Options: User-friendly filtering options are implemented, including price intervals, colors, and categories.
+    - Checkbox Models: Models are defined for checkboxes corresponding to price intervals, colors, and categories.
+    - HTML Code Implementation: HTML code is written within the Index view to integrate these checkbox models, enabling seamless user interaction and filtering.
+    - Database Setup: Configuration and definition of instruments within the database, ensuring accurate storage and retrieval of instrument-related data.
+      
+- **Zehra Bengisu Doğan**
+
 
 ## Problems We Had Experienced
 
