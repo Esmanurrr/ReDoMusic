@@ -27,3 +27,33 @@
     border: 1px solid #ddd; /* Bir kenarlık ekler */
     border-radius: 5px; /* Köşeleri yuvarlar */
 }
+.logo {
+    border-radius: 50%; /* Logoyu yuvarlak yapar */
+    width: 80px; /* Genişlik ayarı */
+    height: 80px; /* Yükseklik ayarı */
+    margin-right:15px;
+}
+
+.card-custom {
+    transition: transform 0.2s, box-shadow 0.2s, border 0.2s; /* Kart üzerine gelindiğinde efektleri düzgün bir şekilde görmek için geçiş süresi ekliyoruz. */
+}
+
+.card-custom:hover {
+        transform: scale(1.05); /* Kartı büyütme efekti */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Gölge efekti */
+        border: 2px solid #777; /* Kenar rengini değiştirme efekti */
+}
+
+.card-custom * {
+        color: initial; /* Kartın içeriğinin yazı rengini varsayılan değere geri döndürür. */
+        text-decoration: none; /* Altı çiziyi kaldırır. */
+}
+
+.navbar-nav .nav-item a.nav-link {
+    font-size: 20px;
+    color: #000;
+}
+
+.navbar-brand {
+    color: #000 !important;
+}
