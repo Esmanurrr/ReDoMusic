@@ -18,7 +18,7 @@ namespace ReDoMusic.MVC.Controllers.Instrument
             _dbContext = new();
         }
 
-        public IActionResult Index()   //Anasayfada listelemek için . Index.cshtml view card yapısıyla gösterilecek.
+        public IActionResult Index()   
         {
             var instruments = _dbContext.Instruments.ToList();
             return View(instruments);

@@ -7,22 +7,28 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ReDoMusic.MVC.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/home.css">
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="~/Home/Index">ReDo Music</a>
+            <a class="navbar-brand" href="/Home/Index">
+                <img src="/img/redomusic.png" alt="ReDo Music" class="logo">
+                ReDo Music
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="~/Home/Index">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="~/HotNew/Index">Hot New</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Instrument/Add">Add Instrument</a>
                     </li>
                 </ul>
                 <form asp-controller="Home" asp-action="Search" method="get" class="d-flex" role="search">
