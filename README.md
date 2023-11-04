@@ -161,5 +161,22 @@ Here is how the method works:
 
 
 ## Problems We Had Experienced
+- We encountered an issue using the color enum in filtering within our project. After selecting a color, the values were returning as 0, and the desired list output was not obtained.
+- When a new instrument was added, even if an existing category and color were selected, duplicate categories and colors with the same name were still being created in the checkbox field.
+- After establishing the relationship between instrument and category, an error occurred during the migration process in the public key definition, and EF Core had difficulty understanding the relationship we implemented.
+  - To resolve this issue, we specified the relationship and public key manually within the 'OnModelCreating' method in the ReDoMusicDbContext class.
+
 
 ## Potential Project Additions Ahead
+- **Adding API Layer:**
+   - We aim to enhance communication with the external world by adding an API layer to our project. This will enable the project to exchange data with other applications and broaden its usability.
+     
+- **JWT-Based User Authentication and Authorization:**
+    - We are considering adding user authentication and authorization features. By using JSON Web Tokens (JWT), we can make our project more dynamic, secure, and user-friendly for various operations.
+
+- **Adding a Blazor Web Project:**
+  - To improve the performance of our project's website, we are contemplating the use of server-side or client-side Blazor technology. This will enhance the user experience, making the project more appealing.
+    
+- **Creating a Shopping Cart and Order Page:**
+    - We intend to add a shopping cart and an order page to facilitate users in easily adding products to their carts and completing their orders. This transformation will help us turn the project into an e-commerce platform.
+    
