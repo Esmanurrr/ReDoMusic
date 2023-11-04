@@ -138,6 +138,10 @@ Here is how the method works:
 
 ## Assignment of Tasks
 - **Elif Baykara**
+    - Navbar Redesign and Optimization: Created a new navbar featuring links to "Home" and "Add Instrument." Implemented page redirections for these links. Optimized the navbar for improved user experience.
+    - Instrument Detail and Addition Pages: Developed detail pages for instruments and an instrument addition page, both linked to brand and model information. Completed frontend components for these pages. Established a database connection in the Instrument Controller. Implemented CRUD operations for listing, adding, and updating instruments.
+    - Home Page Enhancement: Implemented card structures to list all instruments on the home page. Added links to respective detail pages within the card structures. Included a "Buy Now" button for direct purchase options. Displayed instruments with images, prices, and names. Integrated a description section on the instrument detail page. Implemented CSS styles for the detail page and applied necessary styles to "Home.css."
+    - Logo Design and Integration: Designed a logo for ReDo Music. Created an "img" folder under the "wwwroot" directory to store the PNG format logo. Wrote CSS code for the logo, ensuring proper integration within the navbar.
   
 - **Esmanur Mazlum**
     - Navigation Property: Implemented relationships between entities for efficient data retrieval and navigation.
