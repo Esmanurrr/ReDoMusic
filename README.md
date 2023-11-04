@@ -162,6 +162,13 @@ Here is how the method works:
     - Database Setup: Configuration and definition of instruments within the database, ensuring accurate storage and retrieval of instrument-related data.
       
 - **Zehra Bengisu Doğan**
+    - Brand CRUD Operations: Implemented CRUD operations for the Brand entity, allowing Create, Read, Update, and Delete operations.
+    - Brand View Enhancement: Added a view page displaying a list of brands and enabling update and delete functionalities.
+    - Home Controller Optimization: Optimized the Home controller to ensure correct retrieval and listing of instruments based on selected categories in checkboxes.
+    - Fixed Enum Values: Prevented the issue of color options showing a default value of 0 in checkboxes upon page refresh.
+    - Home Controller Post Action Update: Enhanced the Home controller's post action to prevent multiple submissions of the same category, updating the index.cshtml accordingly.
+    - Database: Adding Instruments and Related Data: Integrated functionality to add instruments, categories, brands, and image URLs to the database.
+    - ReadMe Documentation: Drafted and structured the ReadMe document you are currently reading :) providing comprehensive project information and instructions.
 
 
 ## Problems We Had Experienced
