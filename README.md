@@ -30,6 +30,12 @@ These features enhance the project's functionality, providing users with a seaml
 - **Search Bar:**
   Allows users to search products by their names, ensuring quick and precise results for effortless navigation.
 
+- **Details Page**
+   A detail page that opens when the products are clicked has been created.
+
+- **Hot New**
+    A 'Hot New' page has been added, listing the latest 3 products from each category.
+
 ## Project Features (Detailed)
 - **Navigation Property and Entity Relationship:**
   In our created project, we established a one-to-many relationship between each instrument and its category and vice versa. This is because we will create multiple instruments within each category.
@@ -102,12 +108,17 @@ Here is how the method works:
       - return View("Index", viewModel);:** Sends the created viewModel object to the view named "Index". This allows the user to view the search results and filtering options on the page.
       - This method prepares the necessary data for the user to perform searches, view the results, and see filtering options, and it passes this data to the View layer for display on the screen.
 
+- **Details Page**
+
+- **Hot New**
+
 ## Assignment of Tasks
 - **Elif Baykara**
   
 - **Esmanur Mazlum**
     - Navigation Property: Implemented relationships between entities for efficient data retrieval and navigation.
     - Category Controller and Category View: Developed controllers and views for managing and displaying product categories.
+    - Ascending Price Order: Implemented functionality to list instruments based on their price in ascending order, providing users with a sorted view based on price.
     - Search Bar Activation: Enabled the search bar feature for users to find specific items within the application.
     - Hot New Controller and View: Created a controller and view to showcase trending or newly added products.
     - GitHub - Merge: Collaborated on GitHub by merging code changes and branches for seamless integration.
