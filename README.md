@@ -1,5 +1,5 @@
 # YetGen & Akbank Backend Jump Project
-This project is developed for YetGen Akbank Jump.
+This project is developed for YetGen Akbank Jump Program.
 
 # Project Description
 In our ReDo Music project, our aim is to list the instruments in a filterable way according to category, color and product price. At the same time, you can search among these instruments with the search bar and you can easily search the categories. You can also access product additions from the Home page.
