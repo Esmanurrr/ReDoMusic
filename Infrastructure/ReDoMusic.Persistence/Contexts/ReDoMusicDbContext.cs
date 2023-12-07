@@ -12,9 +12,19 @@ namespace ReDoMusic.Infrastructure.Persistence.Contexts
 {
     public class ReDoMusicDbContext : DbContext
     {
+        public ReDoMusicDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public ReDoMusicDbContext()
+        {
+        }
+
         public DbSet<Instrument> Instruments { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<CartItem> ShoppingCartItems { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

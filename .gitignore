@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /Infrastructure/ReDoMusic.Persistence/PrivateInformations.json
 /Infrastructure/ReDoMusic.Persistence/PrivateInformations.json
+/Infrastructure/ReDoMusic.Persistence/PrivateInformations.json
+/Presentation/ReDoMusic.MVC/appsettings.json

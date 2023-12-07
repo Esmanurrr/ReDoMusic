@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Packaging;
 using ReDoMusic.Core.Domain.Entities;
@@ -10,6 +11,7 @@ using System.Linq;
 
 namespace ReDoMusic.MVC.Controllers
 {
+	[Authorize]
 	public class HomeController : Controller
 	{
 
